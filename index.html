@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎮 Website Trò Chơi Nhỏ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background"></div>
+
+  <header>
+    <h1 class="floating-title">🎮 Website Trò Chơi Nhỏ</h1>
+  </header>
+
+  <main id="slider">
+    <!-- Trang Menu chính -->
+    <section class="slide active">
+      <h2>Chọn Trò Chơi</h2>
+      <div class="menu">
+        <button onclick="goToSlide(1)">🔢 Đoán số ngẫu nhiên</button>
+        <button onclick="goToSlide(5)">🧠 Nhớ số</button>
+        <button onclick="goToSlide(8)">🎯 Phản xạ</button>
+      </div>
+    </section>
+
+    <!-- Các phần trò chơi -->
+    <section class="slide">
+      <h2>Đoán Số (1–10)</h2>
+      <p>Nhập số từ 1–10:</p>
+      <input type="number" id="guess1">
+      <button onclick="checkGuess(1)">Kiểm tra</button>
+      <p id="result1"></p>
+      <div class="nav">
+        <button onclick="goToSlide(0)">⬅ Menu</button>
+        <button onclick="goToSlide(2)">➡</button>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>Đoán Số (1–20)</h2>
+      <input type="number" id="guess2">
+      <button onclick="checkGuess(2)">Kiểm tra</button>
+      <p id="result2"></p>
+      <div class="nav">
+        <button onclick="goToSlide(1)">⬅</button>
+        <button onclick="goToSlide(3)">➡</button>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>Đoán Chẵn / Lẻ</h2>
+      <button onclick="guessEvenOdd(true)">Chẵn</button>
+      <button onclick="guessEvenOdd(false)">Lẻ</button>
+      <p id="result3"></p>
+      <div class="nav">
+        <button onclick="goToSlide(2)">⬅</button>
+        <button onclick="goToSlide(4)">➡</button>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>Đoán Số (Tốc độ)</h2>
+      <p>Mỗi lượt random hai số gần nhau. Hãy đoán xem số nào đúng!</p>
+      <button onclick="startSpeedGuess()">Bắt đầu</button>
+      <p id="result4"></p>
+      <div class="nav">
+        <button onclick="goToSlide(3)">⬅</button>
+        <button onclick="goToSlide(0)">🏠 Menu</button>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>Nhớ Số phần 1</h2>
+      <button onclick="startMemory(1)">Bắt đầu</button>
+      <p id="memoryDisplay1"></p>
+      <input type="text" id="memoryInput1" placeholder="Nhập lại dãy số">
+      <button onclick="checkMemory(1)">Kiểm tra</button>
+      <p id="memoryResult1"></p>
+      <div class="nav">
+        <button onclick="goToSlide(0)">⬅ Menu</button>
+        <button onclick="goToSlide(6)">➡</button>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>Nhớ Số phần 2</h2>
+      <button onclick="startMemory(2)">Bắt đầu</button>
+      <p id="memoryDisplay2"></p>
+      <input type="text" id="memoryInput2" placeholder="Nhập lại dãy số">
+      <button onclick="checkMemory(2)">Kiểm tra</button>
+      <p id="memoryResult2"></p>
+      <div class="nav">
+        <button onclick="goToSlide(5)">⬅</button>
+        <button onclick="goToSlide(7)">➡</button>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>Nhớ Số phần 3</h2>
+      <button onclick="startMemory(3)">Bắt đầu</button>
+      <p id="memoryDisplay3"></p>
+      <input type="text" id="memoryInput3" placeholder="Nhập lại dãy số">
+      <button onclick="checkMemory(3)">Kiểm tra</button>
+      <p id="memoryResult3"></p>
+      <div class="nav">
+        <button onclick="goToSlide(6)">⬅</button>
+        <button onclick="goToSlide(0)">🏠 Menu</button>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>Phản Xạ phần 1</h2>
+      <p>Nhấn “Bắt đầu” và bấm thật nhanh khi nút đổi sang <b style="color:red;">đỏ</b>!</p>
+      <button id="reflexBtn" onclick="checkReflex()">Bắt đầu</button>
+      <p id="reflexResult"></p>
+      <div class="nav">
+        <button onclick="goToSlide(0)">⬅ Menu</button>
+        <button onclick="goToSlide(9)">➡</button>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>Phản Xạ phần 2</h2>
+      <p>Bấm nhanh trong 10 giây để xem tốc độ tay của bạn!</p>
+      <button onclick="clickFast()">Bấm Nhanh!</button>
+      <p id="clickCount"></p>
+      <div class="nav">
+        <button onclick="goToSlide(8)">⬅</button>
+        <button onclick="goToSlide(10)">➡</button>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>🎉 Kết Thúc</h2>
+      <p>Cảm ơn bạn đã chơi!</p>
+      <button onclick="goToSlide(0)">🏠 Menu</button>
+    </section>
+  </main>
+
+  <audio id="correctSound" preload="auto"
+    src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg"></audio>
+  <audio id="wrongSound" preload="auto"
+    src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
